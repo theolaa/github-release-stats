@@ -75,6 +75,7 @@ function showStats(data) {
             var hasAssets = releaseAssets.length != 0;
             var releaseAuthor = item.author;
             var publishDate = item.published_at.split("T")[0];
+			var ReleaseDownloadCount = 0;
 
             if(latest) {
                 html += "<div class='row release latest-release'>" +
@@ -91,6 +92,22 @@ function showStats(data) {
                     "</a></h4><hr class='release-hr'>";
             }
 
+            if(hasAssets) {
+                var downloadInfoHTML = "<h4><span class='glyphicon glyphicon-download'></span>" +
+                    "&nbsp&nbspDownload Info: </h4>";
+				downloadInfoHTML += "<ul>";
+                html += "<ul>";
+                $.each(releaseAssets, function(index, asset) {
+                    var assetSize = (asset.size / 1048576.0).toFixed(2);
+                    var lastUpdate = asset.updated_at.split("T")[0];
+                    downloadInfoHTML += "<li>" + asset.name + " (" + assetSize + " MiB)<br>" +
+                        "<i>Last updated on " + lastUpdate + " — Downloaded " +
+                        asset.download_count.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + " times</i></li>";
+					totalDownloadCount += asset.download_count;
+					ReleaseDownloadCount += asset.download_count;
+                });
+            }
+			
             html += "<h4><span class='glyphicon glyphicon-info-sign'></span>&nbsp&nbsp" +
                 "Release Info:</h4>";
 
@@ -102,23 +119,13 @@ function showStats(data) {
             html += "<li><span class='glyphicon glyphicon-calendar'></span>&nbsp&nbspPublished on: " +
                 publishDate + "</li>";
 
-            html += "</ul>";
-        
-            if(hasAssets) {
-                html += "<h4><span class='glyphicon glyphicon-download'></span>" +
-                    "&nbsp&nbspDownload Info: </h4>";
+			html += "<li><span class='glyphicon glyphicon-download'></span>&nbsp&nbspDownloads: " +
+                ReleaseDownloadCount.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,') + "</li>";
 
-                html += "<ul>";
-                $.each(releaseAssets, function(index, asset) {
-                    var assetSize = (asset.size / 1048576.0).toFixed(2);
-                    var lastUpdate = asset.updated_at.split("T")[0];
-                    html += "<li>" + asset.name + " (" + assetSize + " MiB)<br>" +
-                        "<i>Last updated on " + lastUpdate + " — Downloaded " +
-                        asset.download_count + " times</i></li>";
-                    totalDownloadCount += asset.download_count;
-                });
-                html += "</ul>";
-            }
+            html += "</ul>";
+			
+			html += downloadInfoHTML;
+        
             html += "</div>";
         });
 
