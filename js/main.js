@@ -102,7 +102,7 @@ function showStats(data) {
                     var lastUpdate = asset.updated_at.split("T")[0];
                     downloadInfoHTML += "<li>" + asset.name + " (" + assetSize + " MiB)<br>" +
                         "<i>Last updated on " + lastUpdate + " — Downloaded " +
-                        asset.download_count.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1U+202F') + " times</i></li>";
+                        asset.download_count.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1&#8239;') + " times</i></li>";
 					totalDownloadCount += asset.download_count;
 					ReleaseDownloadCount += asset.download_count;
                 });
@@ -120,7 +120,7 @@ function showStats(data) {
                 publishDate + "</li>";
 
 			html += "<li><span class='glyphicon glyphicon-download'></span>&nbsp&nbspDownloads: " +
-                ReleaseDownloadCount.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1U+202F') + "</li>";
+                ReleaseDownloadCount.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1&#8239;') + "</li>";
 
             html += "</ul>";
 			
@@ -130,7 +130,7 @@ function showStats(data) {
         });
 
         if(totalDownloadCount > 0) {
-            totalDownloadCount = totalDownloadCount.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1U+202F');
+            totalDownloadCount = totalDownloadCount.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1&#8239;');
             var totalHTML = "<div class='row total-downloads'>";
             totalHTML += "<h2><span class='glyphicon glyphicon-download'></span>" +
                 "&nbsp&nbspTotal Downloads</h2> ";
