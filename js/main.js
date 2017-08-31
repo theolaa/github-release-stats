@@ -102,7 +102,7 @@ function showStats(data) {
                     var lastUpdate = asset.updated_at.split("T")[0];
                     downloadInfoHTML += "<li>" + asset.name + " (" + assetSize + " MiB)<br>" +
                         "<i>Last updated on " + lastUpdate + " — Downloaded " +
-                        asset.download_count.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1&thinsp;') + " times</i></li>";
+                        asset.download_count.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1&#8202;') + " times</i></li>";
 					totalDownloadCount += asset.download_count;
 					ReleaseDownloadCount += asset.download_count;
                 });
