@@ -98,7 +98,7 @@ function showStats(data) {
 				downloadInfoHTML += "<ul>";
                 html += "<ul>";
                 $.each(releaseAssets, function(index, asset) {
-                    var assetSize = (asset.size / 1048576.0).toFixed(2);
+                    var assetSize = (asset.size / 1048576.0).toFixed(2).replace(/\./, ',');
                     var lastUpdate = asset.updated_at.split("T")[0];
                     downloadInfoHTML += "<li>" + asset.name + " (" + assetSize + " MiB)<br>" +
                         "<i>Last updated on " + lastUpdate + " — Downloaded " +
