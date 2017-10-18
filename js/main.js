@@ -80,9 +80,10 @@ function showStats(data) {
 
             if(latest) {
                 html += "<div class='row release latest-release'>" +
+                    "<h4>Latest Release:</h4><br>"
                     "<h2><a href='" + releaseURL + "' target='_blank'>" +
                     "<span class='glyphicon glyphicon-tag'></span>&nbsp&nbsp" +
-                    "Latest Release: " + releaseTag +
+                    " + releaseTag +
                     "</a></h2><hr class='latest-release-hr'>";
                 latest = false;
             } else {
