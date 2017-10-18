@@ -114,15 +114,15 @@ function showStats(data) {
 
             html += "<ul>";
 
+            html += "<li><span class='glyphicon glyphicon-calendar'></span>&nbsp&nbspPublished on: " +
+                publishDate + "</li>";
+		
             if(hasAuthor) {
                 html += "<li><span class='glyphicon glyphicon-user'></span>&nbsp&nbspRelease Author: " +
                     "<a href='" + releaseAuthor.html_url + "'>" + releaseAuthor.login +"</a><br></li>";
             }
 
-            html += "<li><span class='glyphicon glyphicon-calendar'></span>&nbsp&nbspPublished on: " +
-                publishDate + "</li>";
-
-			html += "<li><span class='glyphicon glyphicon-download'></span>&nbsp&nbspDownloads: " +
+            html += "<li><span class='glyphicon glyphicon-download'></span>&nbsp&nbspDownloads: " +
                 ReleaseDownloadCount.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1&#8239;') + "</li>";
 
             html += "</ul>";
