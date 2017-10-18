@@ -117,7 +117,7 @@ function showStats(data) {
             if(hasAuthor) {
                 html += "<li><span class='glyphicon glyphicon-user'></span>&nbsp&nbspRelease Author: " +
                     "<a href='" + releaseAuthor.html_url + "'>" + releaseAuthor.login +"</a><br></li>";
-	    }
+            }
 
             html += "<li><span class='glyphicon glyphicon-calendar'></span>&nbsp&nbspPublished on: " +
                 publishDate + "</li>";
