@@ -74,7 +74,7 @@ function showStats(data) {
             var releaseAssets = item.assets;
             var hasAssets = releaseAssets.length != 0;
             var releaseAuthor = item.author;
-	    var hasAuthor = releaseAuthor != null;
+            var hasAuthor = releaseAuthor != null;
             var publishDate = item.published_at.split("T")[0];
 			var ReleaseDownloadCount = 0;
 
@@ -114,7 +114,7 @@ function showStats(data) {
 
             html += "<ul>";
 
-	    if(hasAuthor) {
+            if(hasAuthor) {
                 html += "<li><span class='glyphicon glyphicon-user'></span>&nbsp&nbspRelease Author: " +
                     "<a href='" + releaseAuthor.html_url + "'>" + releaseAuthor.login +"</a><br></li>";
 	    }
