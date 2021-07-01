@@ -21,6 +21,13 @@ function validateInput() {
     }
 }
 
+// Focus on #username when document is ready
+$(document).ready(function() {
+    if (!$("#username").val()) {
+        $("#username").focus();
+    }
+});
+
 // Callback function for getting user repositories
 function getUserRepos() {
     var user = $("#username").val();
