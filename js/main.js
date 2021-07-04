@@ -124,7 +124,7 @@ function showStats(data) {
             html += "<h4><span class='glyphicon glyphicon-info-sign'></span>&nbsp&nbsp" +
                 "Release Info:</h4>";
 
-            html += "<ul>";
+            html += "<ul style="list-style-type:none">";
 
             html += "<li><span class='glyphicon glyphicon-calendar'></span>&nbsp&nbspPublished on: " +
                 publishDate + "</li>";
