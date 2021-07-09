@@ -113,8 +113,8 @@ function showStats(data) {
                 $.each(releaseAssets, function(index, asset) {
                     var assetSize = (asset.size / 1048576.0).toFixed(2).replace(/\./, ',');
                     var lastUpdate = asset.updated_at.split("T")[0];
-                    downloadInfoHTML += "<li>" + asset.name + " (" + assetSize + " MiB)<br>" +
-                        "<i>Last updated on " + lastUpdate + " — Downloaded " +
+                    downloadInfoHTML += "<li><a href=\"" + asset.browser_download_url + "\">" + asset.name + "</a> (" + assetSize + " MiB)<br>" +
+                        "<i>Last updated on " + lastUpdate + " &mdash; Downloaded " +
                         asset.download_count.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1&#8239;') + " times</i></li>";
 					totalDownloadCount += asset.download_count;
 					ReleaseDownloadCount += asset.download_count;
