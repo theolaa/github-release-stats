@@ -12,7 +12,7 @@ function getQueryVariable(variable) {
     return "";
 }
 
-// validate the user input
+// Validate the user input
 function validateInput() {
     if ($("#username").val().length > 0 && $("#repository").val().length > 0) {
         $("#get-stats-button").prop("disabled", false);
@@ -88,7 +88,7 @@ function showStats(data) {
             var releaseAuthor = item.author;
             var hasAuthor = releaseAuthor != null;
             var publishDate = item.published_at.split("T")[0];
-			var ReleaseDownloadCount = 0;
+            var ReleaseDownloadCount = 0;
 
             if(latest) {
                 html += "<div class='row release latest-release'>" +
@@ -108,7 +108,7 @@ function showStats(data) {
             if(hasAssets) {
                 var downloadInfoHTML = "<h4><span class='glyphicon glyphicon-download'></span>" +
                     "&nbsp&nbspDownload Info: </h4>";
-				downloadInfoHTML += "<ul>";
+                downloadInfoHTML += "<ul>";
                 html += "<ul>";
                 $.each(releaseAssets, function(index, asset) {
                     var assetSize = (asset.size / 1048576.0).toFixed(2).replace(/\./, ',');
@@ -116,11 +116,11 @@ function showStats(data) {
                     downloadInfoHTML += "<li><a href=\"" + asset.browser_download_url + "\">" + asset.name + "</a> (" + assetSize + " MiB)<br>" +
                         "<i>Last updated on " + lastUpdate + " &mdash; Downloaded " +
                         asset.download_count.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1&#8239;') + " times</i></li>";
-					totalDownloadCount += asset.download_count;
-					ReleaseDownloadCount += asset.download_count;
+                    totalDownloadCount += asset.download_count;
+                    ReleaseDownloadCount += asset.download_count;
                 });
             }
-			
+
             html += "<h4><span class='glyphicon glyphicon-info-sign'></span>&nbsp&nbsp" +
                 "Release Info:</h4>";
 
@@ -138,9 +138,9 @@ function showStats(data) {
                 ReleaseDownloadCount.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1&#8239;') + "</li>";
 
             html += "</ul>";
-			
-			html += downloadInfoHTML;
-        
+
+            html += downloadInfoHTML;
+
             html += "</div>";
         });
 
