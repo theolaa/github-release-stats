@@ -75,8 +75,11 @@ function showStats(data) {
         var latest = true;
         var totalDownloadCount = 0;
 
+        // Set title to username/repository
+        document.title = $("#username").val() + "/" + $("#repository").val() + " - " + document.title;
+
         // Sort by publish date
-        data.sort(function(a, b) {
+        data.sort(function (a, b) {
             return (a.published_at < b.published_at) ? 1 : -1;
         });
 
@@ -115,7 +118,8 @@ function showStats(data) {
                     var lastUpdate = asset.updated_at.split("T")[0];
                     downloadInfoHTML += "<li><a href=\"" + asset.browser_download_url + "\">" + asset.name + "</a> (" + assetSize + " MiB)<br>" +
                         "<i>Last updated on " + lastUpdate + " &mdash; Downloaded " +
-                        asset.download_count.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1&#8239;') + " times</i></li>";
+                        asset.download_count.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1&#8239;');
+                    asset.download_count == 1 ? downloadInfoHTML += " time</i></li>" : downloadInfoHTML += " times</i></li>";
                     totalDownloadCount += asset.download_count;
                     ReleaseDownloadCount += asset.download_count;
                 });
