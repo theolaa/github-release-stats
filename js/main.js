@@ -75,6 +75,9 @@ function showStats(data) {
         var latest = true;
         var totalDownloadCount = 0;
 
+        // Set title to username/repository
+        document.title = $("#username").val() + "/" + $("#repository").val() + " - " + document.title;
+
         // Sort by publish date
         data.sort(function (a, b) {
             return (a.published_at < b.published_at) ? 1 : -1;
