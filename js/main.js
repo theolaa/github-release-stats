@@ -94,15 +94,15 @@ function showStats(data) {
             var ReleaseDownloadCount = 0;
 
             if(latest) {
-                html += "<div class='row release latest-release'>" +
-                    "<h2><a id='latest' href='" + releaseURL + "' target='_blank'>" +
+                html += "<div id='latest' class='row release latest-release'>" +
+                    "<h2><a href='" + releaseURL + "' target='_blank'>" +
                     "<span class='glyphicon glyphicon-tag'></span>&nbsp&nbsp" +
                     "Latest Release: " + releaseTag +
                     "</a></h2><hr class='latest-release-hr'>";
                 latest = false;
             } else {
-                html += "<div class='row release'>" +
-                    "<h4><a id='" + releaseTag + "' href='" + releaseURL + "' target='_blank'>" +
+                html += "<div id='" + releaseTag + "' class='row release'>" +
+                    "<h4><a href='" + releaseURL + "' target='_blank'>" +
                     "<span class='glyphicon glyphicon-tag'></span>&nbsp&nbsp" +
                     releaseTag +
                     "</a></h4><hr class='release-hr'>";
