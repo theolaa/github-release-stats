@@ -138,8 +138,10 @@ function showStats(data) {
                     "<a href='" + releaseAuthor.html_url + "'>" + releaseAuthor.login +"</a><br></li>";
             }
 
-            html += "<li><span class='glyphicon glyphicon-download'></span>&nbsp&nbspDownloads: " +
+            if(hasAssets) {
+                html += "<li><span class='glyphicon glyphicon-download'></span>&nbsp&nbspDownloads: " +
                 ReleaseDownloadCount.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1&#8239;') + "</li>";
+            }
 
             html += "</ul>";
 
