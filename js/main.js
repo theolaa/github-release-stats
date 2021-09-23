@@ -124,6 +124,9 @@ function showStats(data) {
                     ReleaseDownloadCount += asset.download_count;
                 });
             }
+			else {
+				downloadInfoHTML = "<center><i>This release has no download assets available!</i></center>"
+			}
 
             html += "<h4><span class='glyphicon glyphicon-info-sign'></span>&nbsp&nbsp" +
                 "Release Info:</h4>";
