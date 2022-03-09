@@ -114,11 +114,12 @@ function showStats(data) {
                 downloadInfoHTML += "<ul>";
                 html += "<ul>";
                 $.each(releaseAssets, function(index, asset) {
-                    var assetSize = (asset.size / 1048576.0).toFixed(2).replace(/\./, ',');
+                    // Converts asset size to MiB, formatted to up to two decimal places. The number is also formatted based on client's browser locale (e.g. 3.1415 vs. 3,1415).
+                    var assetSize = (asset.size / 1048576.0).toLocaleString(undefined, {maximumFractionDigits: 2});
                     var lastUpdate = asset.updated_at.split("T")[0];
                     downloadInfoHTML += "<li><a href=\"" + asset.browser_download_url + "\">" + asset.name + "</a> (" + assetSize + " MiB)<br>" +
                         "<i>Last updated on " + lastUpdate + " &mdash; Downloaded " +
-                        asset.download_count.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1&#8239;');
+                        asset.download_count.toLocaleString(); // Download count number is formatted based on client's browser locale (e.g. 200 000 vs. 200,000).
                     asset.download_count == 1 ? downloadInfoHTML += " time</i></li>" : downloadInfoHTML += " times</i></li>";
                     totalDownloadCount += asset.download_count;
                     ReleaseDownloadCount += asset.download_count;
@@ -143,7 +144,7 @@ function showStats(data) {
 
             if(hasAssets) {
                 html += "<li><span class='glyphicon glyphicon-download'></span>&nbsp&nbspDownloads: " +
-                ReleaseDownloadCount.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1&#8239;') + "</li>";
+                ReleaseDownloadCount.toLocaleString() + "</li>";
             }
 
             html += "</ul>";
@@ -154,7 +155,7 @@ function showStats(data) {
         });
 
         if(totalDownloadCount > 0) {
-            totalDownloadCount = totalDownloadCount.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1&#8239;');
+            totalDownloadCount = totalDownloadCount.toLocaleString();
             var totalHTML = "<div class='row total-downloads'>";
             totalHTML += "<h2><span class='glyphicon glyphicon-download'></span>" +
                 "&nbsp&nbspTotal Downloads</h2> ";
